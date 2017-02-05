@@ -52,27 +52,48 @@ What's the time complexity?
 
 function Stack(capacity) {
   // implement me...
+  this.storage = {};
+  this.size = 0;
 }
 
 Stack.prototype.push = function(value) {
   // implement me...
+  this.size++;
+  this.storage[this.size] = value;
+  return this.size;
 };
-// Time complexity:
+// Time complexity: O(1) constant
 
 Stack.prototype.pop = function() {
   // implement me...
+  var removedValue = this.storage[this.size];
+  delete(this.storage[this.size]);
+  this.size--;
+  return removedValue;
 };
-// Time complexity:
+// Time complexity: O(1) constant
 
 Stack.prototype.peek = function() {
   // implement me...
+  return this.storage[this.size];
 };
-// Time complexity:
+// Time complexity: O(1) constant
 
 Stack.prototype.count = function() {
   // implement me...
+  return this.size;
 };
 // Time complexity:
+
+var stack = new Stack();
+console.log(stack.push('orange'));
+console.log(stack.push('yellow'));
+console.log(stack.push('pink'));
+console.log(stack.pop());
+console.log(stack.peek());
+console.log(stack.count());
+
+console.log('stack storage:', stack.storage);
 
 
 /*
