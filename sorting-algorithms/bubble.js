@@ -19,3 +19,28 @@ Variants:
 (https://en.wikipedia.org/wiki/Cocktail_sort)
 
 */
+
+
+// time complexity: O(n^2) quadratic
+var bubbleSort = function(array) {
+  for(var i = 0; i < array.length; i++) {
+    for(var j = 0; j < array.length - 1 - i; j++) {
+      if(array[j] > array[j + 1]) {
+        swap(array, j, j + 1);
+      }
+    }
+  }
+  return array;
+};
+
+var swap = function(array, index1, index2) {
+  var temp = array[index1];
+  array[index1] = array[index2];
+  array[index2] = temp;
+};
+
+// var arr = [1, 2, 3, 4];
+// swap(arr, 2, 3);
+// console.log(arr);
+
+console.log(bubbleSort([4, 1, 13, 7, 2, 5, 11, 6]));
