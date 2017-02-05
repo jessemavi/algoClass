@@ -52,27 +52,57 @@ What's the time complexity?
 
 function Queue(capacity) {
   // implement me...
+  this.storage = {};
+  this.size = 0;
+  this.firstValueIndex = 1;
 }
 
 Queue.prototype.enqueue = function(value) {
   // implement me...
+  this.size++;
+  this.storage[this.size] = value;
+  return this.size;
 };
-// Time complexity:
+// Time complexity: O(1) constant
 
 Queue.prototype.dequeue = function() {
   // implement me...
+  if(this.size > 0) {
+    this.size--;
+    var removedValue = this.storage[this.firstValueIndex];
+    delete this.storage[this.firstValueIndex];
+    this.firstValueIndex++;
+    return removedValue;
+  }
 };
-// Time complexity:
+// Time complexity: O(1) constant
 
 Queue.prototype.peek = function() {
   // implement me...
+  return this.storage[this.firstValueIndex];
 };
+// Time complexity: O(1) constant
 
 Queue.prototype.count = function() {
   // implement me...
+  return this.size;
 };
 // Time complexity:
 
+
+var queue = new Queue();
+console.log(queue.enqueue('purple'));
+console.log(queue.enqueue('green'));
+console.log(queue.enqueue('blue'));
+console.log(queue.enqueue('silver'));
+console.log(queue.enqueue('gold'));
+console.log(queue.dequeue());
+console.log(queue.storage);
+console.log(queue.count());
+console.log(queue.peek());
+console.log(queue.dequeue());
+console.log(queue.storage);
+console.log(queue.count());
 
 
 /*
