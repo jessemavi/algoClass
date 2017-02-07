@@ -28,3 +28,35 @@ Stable Variant
 - Implement selection sort for a linked list (you can use your data structure implemention from earlier in the course). How does this impact performance and stability?
 
 */
+
+// [5, 2, 7, 4, 9, 1, 3]
+// [6, 1, 9, 2, 4, 2, 4]
+
+// time complexity: O(n^2) quadratic
+
+var selectionSort = function(array) {
+  for(var i = 0; i < array.length; i++) {
+    var minimumIndex = i;
+    for(var j = i + 1; j < array.length; j++) {
+      if(array[j] < array[minimumIndex]) {
+        minimumIndex = j;
+      }
+    }
+    // if i does not equal minimumIndex then swap
+    // does not swap if an element is in the correct position
+    if(i !== minimumIndex) {
+      swap(array, i, minimumIndex);
+    }
+  }
+  return array;
+};
+
+var swap = function(array, index1, index2) {
+  var temp = array[index1];
+  array[index1] = array[index2];
+  array[index2] = temp;
+};
+
+
+console.log(selectionSort([5, 2, 7, 4, 9, 1, 3]));
+console.log(selectionSort([6, 1, 9, 2, 4, 2, 4]));
